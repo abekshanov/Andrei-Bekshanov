@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cf3934d7-d4ed-4824-9515-6fb2a62c4929" name="Default Changelist" comment="" />
+    <list default="true" id="cf3934d7-d4ed-4824-9515-6fb2a62c4929" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +126,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1222" />
@@ -143,6 +145,11 @@
             <path>
               <item name="git_project1" type="b2602c69:ProjectViewProjectNode" />
               <item name="git_project1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="git_project1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="git_project1" type="462c0819:PsiDirectoryNode" />
+              <item name="storage" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="git_project1" type="b2602c69:ProjectViewProjectNode" />
@@ -191,15 +198,15 @@
       <updated>1572863730879</updated>
       <workItem from="1572863732446" duration="429000" />
       <workItem from="1573037158985" duration="677000" />
-      <workItem from="1573039004246" duration="2997000" />
+      <workItem from="1573039004246" duration="4533000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9878000" />
+    <option name="totallyTimeSpent" value="11414000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22692889" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -227,6 +234,12 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/index.php" />
+    <entry file="file://$PROJECT_DIR$/bootstrap/cache/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://C:/Program Files/Git/mingw32/share/doc/git-doc/git-add.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
