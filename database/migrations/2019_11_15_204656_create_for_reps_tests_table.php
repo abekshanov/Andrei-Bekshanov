@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStrengthTestsTable extends Migration
+class CreateForRepsTestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateStrengthTestsTable extends Migration
      */
     public function up()
     {
-        Schema::create('strength_tests', function (Blueprint $table) {
+        Schema::create('for_reps_tests', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateStrengthTestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('strength_tests');
+        Schema::dropIfExists('for_reps_tests');
     }
 }
