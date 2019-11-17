@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateTrainingTasksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,16 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('training_tasks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('login')->unique();
-            $table->string('password');
-            $table->string('first_name');
-            $table->string('last)_name');
+            $table->string('header');
+            $table->string('content');
+            $table->string('results');
 
-            $table->integer('training_programs_id');
+            $table->unsignedBigInteger('training_programs_id');
             $table->foreign('training_programs_id')->references('id')->on('training_programs');
 
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->rememberToken();
+
             $table->timestamps();
         });
     }
@@ -37,6 +34,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('training_tasks');
     }
 }
