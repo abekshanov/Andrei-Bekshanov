@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('/test/mvc-page/{title}', 'tests\testcontroller1@index');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
