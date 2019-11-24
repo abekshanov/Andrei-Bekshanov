@@ -16,7 +16,8 @@ Route::get('/', function () {
 });
 
 
-Route::get('/test/mvc-page/{title}', 'tests\testcontroller1@index');
+Route::get('/test/mvc-page/{title}', 'tests\testcontroller1@index')->name('mvc-page');
+
 
 Auth::routes();
 
