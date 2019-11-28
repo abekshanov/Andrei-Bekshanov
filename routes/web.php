@@ -22,3 +22,5 @@ Route::get('/test/mvc-page/{title}', 'tests\testcontroller1@index')->name('mvc-p
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/pages/training-programs','pages\pageController@listTrainingPrograms')->name('training-programs');
