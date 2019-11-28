@@ -15,7 +15,7 @@ class pageController extends Controller
 
      $listTrainingPrograms=training_program::all();
 
-   // dump($listTrainingPrograms);
+    dump($listTrainingPrograms);
     return view('pages.training-programs',compact('listTrainingPrograms'));
  }
 }
