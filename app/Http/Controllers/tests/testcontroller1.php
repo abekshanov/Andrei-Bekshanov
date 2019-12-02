@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 class testcontroller1 extends Controller
 {
     // для экспериментов
-    public function index($title){
+    public function index($title)
+    {
         return view('pages.mvc-page', compact('title'));
     }
+
 }
