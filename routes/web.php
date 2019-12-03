@@ -24,10 +24,10 @@ Auth::routes();
 
 //стандартная home страница laravel
 Route::get('/home', 'HomeController@index')->name('home');
-// на страницу вывода списка программ
+// на контроллер вывода списка программ
 Route::get('/pages/training-programs','pages\pageController@listTrainingPrograms')->name('training-programs');
 
-// на страницу вывода списка тренировок
+// на контроллер вывода списка тренировок
 Route:: get('/pages/training-tasks/{program_id}','pages\pageController@changeTrainingPrograms')->name('change-programs');
 
 
@@ -42,7 +42,13 @@ Route:: get('/pages/add-training-tasks/{program_id}',function ($program_id){
 })->name('add-task');
 
 //на контроллер записи тренировки в БД
-Route::post('pages/add-task-db','pages\pageController@addTasks')->name('add-task-db');
+Route::post('/pages/add-task-db','pages\pageController@addTasks')->name('add-task-db');
 
 // на контроллер записи программы в БД
-Route::post('pages/add-program-db','pages\pageController@addPrograms')->name('add-program-db');
+Route::post('/pages/add-program-db','pages\pageController@addPrograms')->name('add-program-db');
+
+// на контроллер удаления программы из БД
+route::get('/pages/delete-program-db/{program_id}','pages\pageController@deletePrograms')->name('delete-program');
+
+// на контроллер вывода содержимого выбранной тренировки
+route::get('/pages/show-full-task/{task_id}','pages\pageController@showFullTask')->name('show-full-task');

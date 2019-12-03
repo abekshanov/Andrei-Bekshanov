@@ -15,4 +15,18 @@ class trainingTasksService
         $tasks->save();
     }
 
+    public function showFromDb ($program_id){
+        $tasks= new training_task();
+        if ($program_id=="NULL") { $listTrainingTasks=$tasks::whereNull('training_programs_id')->get(); }
+        else {
+            $listTrainingTasks = $tasks::where('training_programs_id', $program_id)->get();
+        }
+        return $listTrainingTasks;
+    }
+
+    public function showFullTaskDb ($task_id){
+        $full_task=training_task::find( $task_id);
+        return $full_task;
+    }
+
 }

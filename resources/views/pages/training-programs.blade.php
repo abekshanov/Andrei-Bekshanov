@@ -11,6 +11,8 @@
            @foreach($listTrainingPrograms as $listTrainingProgram)
                 <a href="{{route('change-programs',$listTrainingProgram->id)}}" class="list-group-item list-group-item-action list-group-item-info my-1 py-0">{{$listTrainingProgram->id." ".$listTrainingProgram->name}}</a>
            @endforeach
+           <a href="{{route('change-programs','NULL')}}" class="list-group-item list-group-item-action list-group-item-info my-1 py-0">Архивные тренировки (из удаленных программ)</a>
+
         </div>
     </div>
 @endsection

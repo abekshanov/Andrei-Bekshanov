@@ -13,4 +13,14 @@ class trainingProgramsService
         $program->save();
     }
 
+    public function deleteProgramFromDb ($program_id){
+        $program = new training_program();
+        $program::where('id',$program_id)->delete();
+    }
+
+    public function showProgramsFromDb (){
+        $programs=training_program::all();
+        return $programs;
+    }
+
 }
