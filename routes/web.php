@@ -30,9 +30,6 @@ Route::get('/pages/training-programs','pages\pageController@listTrainingPrograms
 // на страницу вывода списка тренировок
 Route:: get('/pages/training-tasks/{program_id}','pages\pageController@changeTrainingPrograms')->name('change-programs');
 
-// на страницу уведомлений
-//Route::post('/pages/system-message','pages\pageController@showSystemMessage')->name('sys-msg');
-
 
 // на страницу добавления новой программы тренировок
 Route:: get('/pages/add-training-program',function (){
@@ -40,10 +37,12 @@ Route:: get('/pages/add-training-program',function (){
 })->name('add-program');
 
 // на страницу добавления новой тренировки
-Route:: get('/pages/add-training-tasks',function (){
-    return view('pages.add-task');
+Route:: get('/pages/add-training-tasks/{program_id}',function ($program_id){
+    return view('pages.add-task',compact('program_id'));
 })->name('add-task');
 
-//на контроллер записи данных в БД
+//на контроллер записи тренировки в БД
 Route::post('pages/add-task-db','pages\pageController@addTasks')->name('add-task-db');
 
+// на контроллер записи программы в БД
+Route::post('pages/add-program-db','pages\pageController@addPrograms')->name('add-program-db');

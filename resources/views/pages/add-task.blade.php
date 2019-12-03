@@ -5,6 +5,7 @@
         <p>Страница для добавления новой тренировки в БД</p>
         <form method="post"  action="{{route('add-task-db')}}" >
             {{ csrf_field() }}
+            <input type="hidden" name="program_id"  value="{{$program_id}}">
             <p>Название тренировки</p>
             <input type="text" name="header" id="" class="w-100">
             <p>Задания на тренировку</p>
