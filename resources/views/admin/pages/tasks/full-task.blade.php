@@ -3,11 +3,11 @@
 @section('content')
     <div class="container">
         <p>Название тренировки:</p>
-        <p>{{$result->header}}</p>
+        <p>{{$fullTask->header}}</p>
         <p>Задание:</p>
-        <p>{{$result->content}}</p>
+        <p>{{$fullTask->content}}</p>
         <p>Результат</p>
-        <p>{{$result->results}}</p>
+        <p>{{$fullTask->results}}</p>
 
     </div>
 @endsection
