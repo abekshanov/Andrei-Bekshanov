@@ -9,12 +9,14 @@ use Illuminate\Http\Request;
 class ProgramsController extends Controller
 {
     //programs controller
- public function listTrainingPrograms (){
+ public function listTrainingPrograms()
+ {
      $listTrainingPrograms=TrainingProgramsService::showPrograms();
      return view('admin.pages.programs.training-programs',compact('listTrainingPrograms'));
  }
 
- public  function addPrograms (Request $request){
+ public  function addPrograms(Request $request)
+ {
      $previousPage='training-programs'; //страница на которую можно вернуться
      $input=$request->all();
      $isAdded=trainingProgramsService::addProgram($input);
@@ -27,7 +29,8 @@ class ProgramsController extends Controller
      return view('pages.system-message', ['strMsg'=>$strMsg,'previousPage'=>$previousPage]);
  }
 
- public function deletePrograms ($programId){
+ public function deletePrograms($programId)
+ {
 
      $previousPage='training-programs'; //страница на которую можно вернуться
      $isDeleted=TrainingProgramsService::deleteProgram($programId);
@@ -41,6 +44,19 @@ class ProgramsController extends Controller
      return view('pages.system-message', compact('strMsg', 'previousPage'));
  }
 
+ public function updatePrograms(Request $request)
+ {
+     $previousPage='training-programs'; //страница на которую можно вернуться
+     $input=$request->all();
+     $isUpdated=trainingProgramsService::updateProgram($input);
+
+     if ($isUpdated) {
+         $strMsg='Программа успешно сохранена';
+     } else {
+         $strMsg='Не удалось сохранить программу(((';
+     }
+     return view('pages.system-message', ['strMsg'=>$strMsg,'previousPage'=>$previousPage]);
+ }
 
 
 }

@@ -28,7 +28,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin/pages/training-programs','Pages\ProgramsController@listTrainingPrograms')->name('training-programs');
 
 // на контроллер вывода списка тренировок
-Route:: get('/admin/pages/training-tasks/{programId}','Pages\TasksController@listTrainingTasks')->name('change-programs');
+Route:: get('/admin/pages/training-tasks/{programId}-{programName}','Pages\TasksController@listTrainingTasks')->name('change-programs');
 
 
 // на страницу добавления новой программы тренировок
@@ -52,3 +52,16 @@ route::get('/admin/pages/delete-program-db/{programId}','Pages\ProgramsControlle
 
 // на контроллер вывода содержимого выбранной тренировки
 route::get('/admin/pages/show-full-task/{taskId}','Pages\TasksController@showFullTask')->name('show-full-task');
+
+//на шаблон формы изменения данных программы
+route::get('/admin/pages/form-program-db/{programId}-{programName}',function ($programId, $programName){
+
+    return view('admin.pages.programs.update-program', compact('programId','programName'));
+})->name('form-program-db');
+
+// на контроллер обновления существующей программы в БД
+Route::post('/admin/pages/update-program-db','Pages\ProgramsController@updatePrograms')->name('update-program-db');
+
+// на контроллер обновления существующей тренировки в БД
+Route::post('/admin/pages/update-task-data','Pages\TasksController@updateTasks')->name('update-task-data');
+
