@@ -7,7 +7,7 @@ use App\TrainingTask;
 class trainingTasksService
 {
     // Класс для работы с моделью TrainingTask БД: Добавить запись, удалить, редактировать, выбрать данные
-    public static function addToDb($inputData)
+    public static function create($inputData)
     {
         $tasks = new TrainingTask();
         $tasks->header = $inputData['header'];
@@ -16,7 +16,7 @@ class trainingTasksService
         $tasks->save();
     }
 
-    public static function showTaskList($programId)
+    public static function getTaskList($programId)
     {
         $tasks= new TrainingTask();
         if ($programId=="NULL") { $listTrainingTasks=$tasks::whereNull('training_programs_id')->get(); }
@@ -26,7 +26,7 @@ class trainingTasksService
         return $listTrainingTasks;
     }
 
-    public static function showFullTask($taskId)
+    public static function getFullTask($taskId)
     {
         $fullTask=TrainingTask::find($taskId);
         return $fullTask;

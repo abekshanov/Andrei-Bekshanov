@@ -21,7 +21,7 @@ class TrainingProgramsService
         return $isDeleted;
     }
 
-    public static function showPrograms()
+    public static function getPrograms()
     {
         $listPrograms=TrainingProgram::all();
         return $listPrograms;

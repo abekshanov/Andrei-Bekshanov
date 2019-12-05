@@ -11,7 +11,7 @@ class ProgramsController extends Controller
     //programs controller
  public function listTrainingPrograms()
  {
-     $listTrainingPrograms=TrainingProgramsService::showPrograms();
+     $listTrainingPrograms=TrainingProgramsService::getPrograms();
      return view('admin.pages.programs.training-programs',compact('listTrainingPrograms'));
  }
 
@@ -26,7 +26,7 @@ class ProgramsController extends Controller
      } else {
          $strMsg='Не удалось добавить программу(((';
      }
-     return view('pages.system-message', ['strMsg'=>$strMsg,'previousPage'=>$previousPage]);
+     return view('pages.system-message', compact('strMsg','previousPage'));
  }
 
  public function deletePrograms($programId)

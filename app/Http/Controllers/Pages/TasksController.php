@@ -12,7 +12,7 @@ class TasksController extends Controller
 
  public function listTrainingTasks($programId, $programName)
  {
-     $listTrainingTasks=trainingTasksService::showTaskList($programId);
+     $listTrainingTasks=trainingTasksService::getTaskList($programId);
      return view('admin.pages.tasks.training-tasks', compact('listTrainingTasks', 'programId', 'programName'));
  }
 
@@ -21,13 +21,13 @@ class TasksController extends Controller
     $strMsg='Тренировка успешно добавлена';
     $previousPage='training-programs';
     $input=$request->all();
-    trainingTasksService::addToDb($input);
+    trainingTasksService::create($input);
     return view('pages.system-message', compact('strMsg','previousPage'));
  }
 
  public function showFullTask($taskId)
  {
-     $fullTask=trainingTasksService::showFullTask($taskId);
+     $fullTask=trainingTasksService::getFullTask($taskId);
      return view('admin.pages.tasks.full-task',compact('fullTask'));
  }
 

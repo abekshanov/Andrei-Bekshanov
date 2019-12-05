@@ -13,11 +13,15 @@
             <a href="{{route('delete-program',['programId' => $programId])}}" class="col-3 btn btn-sm btn-primary  my-3" >Удалить программу</a>
         </div> <!--endrow-->
         <p>Программа: {{$programName}}</p>
-        <div class="listgroup">
+        <table>
            @foreach($listTrainingTasks as $listTrainingTask)
-                <a href="{{route('show-full-task',['taskId'=>$listTrainingTask->id])}}" class="list-group-item list-group-item-action list-group-item-info my-1 py-0">{{$listTrainingTask->id." ".$listTrainingTask->header}}</a>
+               <tr>
+                   <td>
+                       <a href="{{route('show-full-task',['taskId'=>$listTrainingTask->id])}}" class="list-group-item list-group-item-action list-group-item-info my-1 py-0">{{$listTrainingTask->id." ".$listTrainingTask->header}}</a>
+                   </td>
+               </tr>
            @endforeach
-        </div>
+        </table>
     </div>
 @endsection
 
