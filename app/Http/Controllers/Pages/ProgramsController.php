@@ -11,7 +11,7 @@ class ProgramsController extends Controller
     //programs controller
  public function listTrainingPrograms()
  {
-     $listTrainingPrograms=TrainingProgramsService::getPrograms();
+     $listTrainingPrograms=TrainingProgramsService::getAll();
      return view('admin.pages.programs.training-programs',compact('listTrainingPrograms'));
  }
 
@@ -19,7 +19,7 @@ class ProgramsController extends Controller
  {
      $previousPage='training-programs'; //страница на которую можно вернуться
      $input=$request->all();
-     $isAdded=trainingProgramsService::addProgram($input);
+     $isAdded=trainingProgramsService::create($input);
 
      if ($isAdded) {
          $strMsg='Программа успешно добавлена';
@@ -33,7 +33,7 @@ class ProgramsController extends Controller
  {
 
      $previousPage='training-programs'; //страница на которую можно вернуться
-     $isDeleted=TrainingProgramsService::deleteProgram($programId);
+     $isDeleted=TrainingProgramsService::delete($programId);
 
      if ($isDeleted){
          $strMsg='Программа успешно удалена, связанные с ней тренировки сохнранены в "Архив тренировок"';
@@ -48,7 +48,7 @@ class ProgramsController extends Controller
  {
      $previousPage='training-programs'; //страница на которую можно вернуться
      $input=$request->all();
-     $isUpdated=trainingProgramsService::updateProgram($input);
+     $isUpdated=trainingProgramsService::update($input);
 
      if ($isUpdated) {
          $strMsg='Программа успешно сохранена';
