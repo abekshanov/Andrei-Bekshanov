@@ -13,7 +13,8 @@ class TasksController extends Controller
  public function listTrainingTasks($programId, $programName)
  {
      $listTrainingTasks=trainingTasksService::getTaskList($programId);
-     session(['programId' => $programId, 'progrmaName' => $programName]);
+     session(['programId' => $programId]);
+     session(['programName' => $programName]);
      return view('admin.pages.tasks.training-tasks', compact('listTrainingTasks'));
  }
 
@@ -26,14 +27,24 @@ class TasksController extends Controller
     return view('pages.system-message', compact('strMsg','previousPage'));
  }
 
- public function deleteTasks(Request $request)
+ public function deleteTasks($taskId)
  {
-     $taskId=$request['id'];
-     trainingTasksService::delete($taskId);
+     $isDeleted=trainingTasksService::delete($taskId);
 
-     $programId=session('programID');
+     $programId=session('programId');
      $programName=session('programName');
-     return redirect()->route('change-programs', compact('programId', 'programName'))->with('status', 'Тренировка успешно удалена!');
+     $status="";
+     $errors="";
+
+     if ($isDeleted){
+         $status='Тренировка успешно удалена!';
+     } else{
+         $errors='Ошибка!';
+     }
+
+     return redirect()->route('change-programs', compact('programId', 'programName'))
+         ->with('status', $status)
+         ->with('errors', $errors);
  }
 
  public function showFullTask($taskId)

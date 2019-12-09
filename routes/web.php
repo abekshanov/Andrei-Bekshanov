@@ -65,5 +65,5 @@ Route::post('/admin/pages/update-program-db','Pages\ProgramsController@updatePro
 Route::post('/admin/pages/update-task-data','Pages\TasksController@updateTasks')->name('update-task-data');
 
 // на контроллер удаления тренировки из БД
-Route::get('/admin/pages/delete-task-db','Pages\TaskController@deleteTasks')->name('delete-task');
+Route::get('/admin/pages/delete-task-db/{taskId}','Pages\TasksController@deleteTasks')->name('delete-task');
 
