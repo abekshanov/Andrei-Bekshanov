@@ -13,7 +13,14 @@ class trainingTasksService
         $tasks->header = $inputData['header'];
         $tasks->content = $inputData['content'];
         $tasks->training_programs_id = $inputData['programId'];
-        $tasks->save();
+        $created=$tasks->save();
+        return $created;
+    }
+
+    public static function delete($taskId)
+    {
+        $deleted=TrainingTask::where('id',$taskId)->delete();
+        return $deleted;
     }
 
     public static function getTaskList($programId)
@@ -37,7 +44,7 @@ class trainingTasksService
         $task=TrainingTask::find($inputData['id']);
         $task->header = $inputData['header'];
         $task->content = $inputData['content'];
-        $isUpdated=$task->save();
-        return $isUpdated;
+        $updated=$task->save();
+        return $updated;
     }
 }

@@ -11,14 +11,14 @@ class TrainingProgramsService
     {
         $program = new TrainingProgram();
         $program->name = $inputData['name'];
-        $isAdded=$program->save();
-        return $isAdded;
+        $created=$program->save();
+        return $created;
     }
 
     public static function delete($programId)
     {
-        $isDeleted=TrainingProgram::where('id',$programId)->delete();
-        return $isDeleted;
+        $deleted=TrainingProgram::where('id',$programId)->delete();
+        return $deleted;
     }
 
     public static function getAll()
@@ -31,8 +31,8 @@ class TrainingProgramsService
     {
         $program = TrainingProgram::find($inputData['id']);
         $program->name = $inputData['name'];
-        $isUpdated=$program->save();
-        return $isUpdated;
+        $updated=$program->save();
+        return $updated;
     }
 
 }
