@@ -5,12 +5,12 @@
         <div class="row m-0">
             <a href="{{route('add-task',['programId' => session('programId')])}}" class="col-3 btn btn-sm btn-primary  my-3 @if (session('programId')=='NULL') disabled @endif ">Добавить новую тренировку</a>
             <div class="col-6"></div>
-            <a href="{{route('form-program-db')}}" class="col-3 btn btn-sm btn-primary  my-3  ">Изменить название программы</a>
+            <a href="{{route('form-program-db')}}" class="col-3 btn btn-sm btn-primary  my-3 @if (session('programId')=='NULL') disabled @endif ">Изменить название программы</a>
         </div> <!--endrow-->
         <div class="row m-0">
             <a href="{{route('training-programs')}}" class="col-3 btn btn-sm btn-primary  my-3" >Назад</a>
             <div class="col-6"></div>
-            <a href="{{route('delete-program',['programId' => session('programId')])}}" class="col-3 btn btn-sm btn-primary  my-3" >Удалить программу</a>
+            <a href="{{route('delete-program',['programId' => session('programId')])}}" class="col-3 btn btn-sm btn-primary  my-3 @if (session('programId')=='NULL') disabled @endif " >Удалить программу</a>
         </div> <!--endrow-->
         <p>Программа: {{session('programName')}}</p>
         <table>
