@@ -28,7 +28,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin/pages/training-programs','Pages\ProgramsController@listTrainingPrograms')->name('training-programs');
 
 // на контроллер вывода списка тренировок
-Route:: get('/admin/pages/training-tasks/{programId}-{programName}','Pages\TasksController@listTrainingTasks')->name('change-programs');
+Route:: get('/admin/pages/training-tasks/{programId}-{programName}','Pages\TasksController@listTrainingTasks')->name('list-tasks');
 
 
 // на страницу добавления новой программы тренировок

@@ -20,11 +20,31 @@ class TasksController extends Controller
 
  public function addTasks(Request $request)
  {
-    $strMsg='Тренировка успешно добавлена';
-    $previousPage='training-programs';
-    $input=$request->all();
-    trainingTasksService::create($input);
-    return view('pages.system-message', compact('strMsg','previousPage'));
+     $programId=session('programId');
+     $programName=session('programName');
+     $status="";
+     $errors="";
+
+     $input=$request->all();
+     if ($programId!="NULL") {
+         $created=trainingTasksService::create($input);
+     } else {
+         $created=false;
+     }
+
+     if ($created){
+         $status='Тренировка успешно добавлена!';
+     } else{
+         if ($programId=="NULL") {
+             $errors='Нельзя добавлять новые тренировки в Архив';
+         } else {
+             $errors='Ошибка!';
+         }
+     }
+
+     return redirect()->route('list-tasks', compact('programId', 'programName'))
+         ->with('status', $status)
+         ->with('errors', $errors);
  }
 
  public function deleteTasks($taskId)
@@ -42,7 +62,7 @@ class TasksController extends Controller
          $errors='Ошибка!';
      }
 
-     return redirect()->route('change-programs', compact('programId', 'programName'))
+     return redirect()->route('list-tasks', compact('programId', 'programName'))
          ->with('status', $status)
          ->with('errors', $errors);
  }
@@ -56,17 +76,23 @@ class TasksController extends Controller
 
  public function updateTasks(Request $request)
  {
-     $previousPage='training-programs';
      $input=$request->all();
-     $isUpdated=trainingTasksService::update($input);
+     $updated=trainingTasksService::update($input);
 
-     if ($isUpdated) {
-         $strMsg='Тренировка успешно сохранена';
-     } else {
-         $strMsg='Не удалось сохранить троенировку(((';
+     $programId=session('programId');
+     $programName=session('programName');
+     $status="";
+     $errors="";
+
+     if ($updated){
+         $status='Тренировка успешно сохранена!';
+     } else{
+         $errors='Ошибка!';
      }
 
-     return view('pages.system-message', compact('strMsg','previousPage'));
+     return redirect()->route('list-tasks', compact('programId', 'programName'))
+         ->with('status', $status)
+         ->with('errors', $errors);
  }
 
 }

@@ -80,6 +80,18 @@
         </nav>
 
         <main class="py-4">
+            {{--Вывод ошибок или статуса--}}
+            @if(session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
+            @if(session('errors'))
+                <div class="alert alert-danger">
+                    {{ session('errors') }}
+                </div>
+            @endif
+        <!--end-->
             @yield('content')
         </main>
     </div>

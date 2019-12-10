@@ -3,4 +3,18 @@
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="ES6" />
   </component>
+  <component name="PhpEntryPointsManager">
+    <entry_point>
+      <entry_point TYPE="phpMethod" FQNAME="\App\Http\Controllers\Pages\ProgramsController addPrograms" />
+      <entry_point TYPE="phpMethod" FQNAME="\App\Http\Controllers\Pages\ProgramsController deletePrograms" />
+      <entry_point TYPE="phpMethod" FQNAME="\App\Http\Controllers\Pages\ProgramsController listTrainingPrograms" />
+      <entry_point TYPE="phpClass" FQNAME="\App\Http\Controllers\Pages\ProgramsController" />
+      <entry_point TYPE="phpMethod" FQNAME="\App\Http\Controllers\Pages\ProgramsController updatePrograms" />
+    </entry_point>
+    <pattern value="\App\Http\Controllers\Pages\ProgramsController" member="addPrograms" />
+    <pattern value="\App\Http\Controllers\Pages\ProgramsController" member="deletePrograms" />
+    <pattern value="\App\Http\Controllers\Pages\ProgramsController" member="listTrainingPrograms" />
+    <pattern value="\App\Http\Controllers\Pages\ProgramsController" />
+    <pattern value="\App\Http\Controllers\Pages\ProgramsController" member="updatePrograms" />
+  </component>
 </project>

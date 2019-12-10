@@ -17,45 +17,58 @@ class ProgramsController extends Controller
 
  public  function addPrograms(Request $request)
  {
-     $previousPage='training-programs'; //страница на которую можно вернуться
      $input=$request->all();
-     $isAdded=trainingProgramsService::create($input);
+     $added=trainingProgramsService::create($input);
 
-     if ($isAdded) {
-         $strMsg='Программа успешно добавлена';
-     } else {
-         $strMsg='Не удалось добавить программу(((';
+     $status="";
+     $errors="";
+
+     if ($added){
+         $status='Программа успешно добавлена!';
+     } else{
+         $errors='Ошибка!';
      }
-     return view('pages.system-message', compact('strMsg','previousPage'));
+
+     return redirect()->route('training-programs')
+         ->with('status', $status)
+         ->with('errors', $errors);
  }
 
  public function deletePrograms($programId)
  {
+     $deleted=TrainingProgramsService::delete($programId);
 
-     $previousPage='training-programs'; //страница на которую можно вернуться
-     $isDeleted=TrainingProgramsService::delete($programId);
+     $status="";
+     $errors="";
 
-     if ($isDeleted){
-         $strMsg='Программа успешно удалена, связанные с ней тренировки сохнранены в "Архив тренировок"';
-     } else {
-         $strMsg='Не удалось удалить программу ((("';
+     if ($deleted){
+         $status='Программа успешно удалена, связанные с ней тренировки сохнранены в "Архив тренировок"';
+     } else{
+         $errors='Ошибка!';
      }
 
-     return view('pages.system-message', compact('strMsg', 'previousPage'));
+     return redirect()->route('training-programs')
+         ->with('status', $status)
+         ->with('errors', $errors);
  }
 
  public function updatePrograms(Request $request)
  {
-     $previousPage='training-programs'; //страница на которую можно вернуться
      $input=$request->all();
-     $isUpdated=trainingProgramsService::update($input);
+     $updated=trainingProgramsService::update($input);
 
-     if ($isUpdated) {
-         $strMsg='Программа успешно сохранена';
-     } else {
-         $strMsg='Не удалось сохранить программу(((';
+     $status="";
+     $errors="";
+
+     if ($updated){
+         $status='Программа успешно сохранена!';
+     } else{
+         $errors='Ошибка!';
      }
-     return view('pages.system-message', ['strMsg'=>$strMsg,'previousPage'=>$previousPage]);
+
+     return redirect()->route('training-programs')
+         ->with('status', $status)
+         ->with('errors', $errors);
  }
 
 
