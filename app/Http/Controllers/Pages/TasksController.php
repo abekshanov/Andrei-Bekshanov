@@ -83,16 +83,9 @@ class TasksController extends Controller
      $programId = session('programId');
      $programName = session('programName');
 
-     try {
-         trainingTasksService::update($input);
-         $status = 'Тренировка успешно сохранена!';
-     }
-     catch (\Throwable $exception) {
+     trainingTasksService::update($input);
 
-         $errors=$exception->getMessage();
-
-         return back()->withErrors($errors);
-     }
+     $status = 'Тренировка успешно сохранена!';
 
      return redirect()->route('list-tasks', compact('programId', 'programName'))
          ->with('status', $status);
