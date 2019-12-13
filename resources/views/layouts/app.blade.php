@@ -86,12 +86,16 @@
                     {{ session('status') }}
                 </div>
             @endif
-            @if(session('errors'))
+            @if (count($errors) > 0)
                 <div class="alert alert-danger">
-                    {{ session('errors') }}
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
             @endif
-        <!--end-->
+             <!--end-->
             @yield('content')
         </main>
     </div>

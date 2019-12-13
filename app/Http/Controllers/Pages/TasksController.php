@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pages;
 
 use App\Classes\Services\TrainingTasksService;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TaskRequest;
 use Illuminate\Http\Request;
 
 class TasksController extends Controller
@@ -74,25 +75,49 @@ class TasksController extends Controller
  }
 
 
- public function updateTasks(Request $request)
+ public function updateTasks(TaskRequest $request)
  {
+     //VERSION METHOD BASED ON VALIDATION
+
      $input=$request->all();
-     $updated=trainingTasksService::update($input);
+     $programId = session('programId');
+     $programName = session('programName');
 
-     $programId=session('programId');
-     $programName=session('programName');
-     $status="";
-     $errors="";
+     try {
+         trainingTasksService::update($input);
+         $status = 'Тренировка успешно сохранена!';
+     }
+     catch (\Throwable $exception) {
 
-     if ($updated){
-         $status='Тренировка успешно сохранена!';
-     } else{
-         $errors='Ошибка!';
+         $errors=$exception->getMessage();
+
+         return back()->withErrors($errors);
      }
 
      return redirect()->route('list-tasks', compact('programId', 'programName'))
-         ->with('status', $status)
-         ->with('errors', $errors);
+         ->with('status', $status);
  }
+
+    /*public function updateTasks(Request $request) // LAST VERSION METHOD BASED ON EXCEPTIONS
+    {
+
+        $input=$request->all();
+        $programId = session('programId');
+        $programName = session('programName');
+
+        try {
+            trainingTasksService::update($input);
+            $status = 'Тренировка успешно сохранена!';
+        }
+        catch (\Throwable $exception) {
+
+            $errors=$exception->getMessage();
+
+            return back()->withErrors($errors);
+        }
+
+        return redirect()->route('list-tasks', compact('programId', 'programName'))
+            ->with('status', $status);
+    } */
 
 }
