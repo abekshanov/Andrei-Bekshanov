@@ -67,3 +67,6 @@ Route::post('/admin/pages/update-task-data','Pages\TasksController@updateTasks')
 // на контроллер удаления тренировки из БД
 Route::get('/admin/pages/delete-task-db/{taskId}','Pages\TasksController@deleteTasks')->name('delete-task');
 
+// на список стандартных заданий
+Route::get('/admin/pages/list-tests', 'Pages\TestsController@listTests')->name('list-tests');
+
