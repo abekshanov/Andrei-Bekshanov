@@ -17,7 +17,10 @@
            @foreach($listTrainingTasks as $listTrainingTask)
                <tr>
                    <td>
-                       <a href="{{route('show-full-task',['taskId'=>$listTrainingTask->id])}}" class="list-group-item list-group-item-action list-group-item-info my-1 py-0">{{$listTrainingTask->id." ".$listTrainingTask->header}}</a>
+                       <a href="{{route('show-full-task',['taskId'=>$listTrainingTask->id])}}" class=" list-group-item list-group-item-action list-group-item-info my-1 py-1">{{$listTrainingTask->id." ".$listTrainingTask->header}}</a>
+                   </td>
+                   <td>
+                       <a href="{{route('delete-task', ['taskId' => $listTrainingTask->id])}}" class="btn btn-sm btn-primary ml-3" >Удалить</a>
                    </td>
                </tr>
            @endforeach

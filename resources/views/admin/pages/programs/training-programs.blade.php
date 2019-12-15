@@ -10,13 +10,16 @@
             @foreach($listTrainingPrograms as $listTrainingProgram)
                 <tr>
                     <td>
-                        <a href="{{route('list-tasks', array('programId' => $listTrainingProgram->id, 'programName' => $listTrainingProgram->name))}}" class="list-group-item list-group-item-action list-group-item-info my-1 py-0">{{$listTrainingProgram->id." ".$listTrainingProgram->name}}</a>
+                        <a href="{{route('list-tasks', array('programId' => $listTrainingProgram->id, 'programName' => $listTrainingProgram->name))}}" class="list-group-item list-group-item-action list-group-item-info my-1 py-1">{{$listTrainingProgram->id." ".$listTrainingProgram->name}}</a>
+                    </td>
+                    <td>
+                        <a href="{{route('delete-program',['programId' => $listTrainingProgram->id])}}" class="btn btn-sm btn-primary ml-3 my-1" >Удалить программу</a>
                     </td>
                 </tr>
             @endforeach
                 <tr>
                     <td>
-                        <a href="{{route('list-tasks',array('programId' => 'NULL', 'programName' => 'Архивные тренировки (из удаленных программ)'))}}" class="list-group-item list-group-item-action list-group-item-info my-1 py-0">Архивные тренировки (из удаленных программ)</a>
+                        <a href="{{route('list-tasks',array('programId' => 'NULL', 'programName' => 'Архивные тренировки (из удаленных программ)'))}}" class="list-group-item list-group-item-action list-group-item-info my-1 py-1">Архивные тренировки (из удаленных программ)</a>
                     </td>
                  </tr>
         </table>
