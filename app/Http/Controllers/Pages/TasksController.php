@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Pages;
 use App\Classes\Services\TrainingTasksService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TaskRequest;
+use Exception;
 use Illuminate\Http\Request;
 
 class TasksController extends Controller
@@ -13,104 +14,85 @@ class TasksController extends Controller
 
  public function listTrainingTasks($programId, $programName)
  {
-     $listTrainingTasks=trainingTasksService::getTaskList($programId);
      session(['programId' => $programId]);
      session(['programName' => $programName]);
-     return view('admin.pages.tasks.training-tasks', compact('listTrainingTasks'));
+     try {
+         $listTrainingTasks=trainingTasksService::getTaskList($programId);
+         return view('admin.pages.tasks.training-tasks', compact('listTrainingTasks'));
+     }catch (Exception $exception){
+         $errors=$exception->getMessage();
+         return back()->withErrors($errors);
+     }
+
  }
 
- public function addTasks(Request $request)
+ public function addTasks(TaskRequest $request)
  {
+     // Validation is ON
+     $input=$request->all();
      $programId=session('programId');
      $programName=session('programName');
-     $status="";
-     $errors="";
 
-     $input=$request->all();
-     if ($programId!="NULL") {
-         $created=trainingTasksService::create($input);
-     } else {
-         $created=false;
-     }
+     try{
 
-     if ($created){
-         $status='Тренировка успешно добавлена!';
-     } else{
-         if ($programId=="NULL") {
-             $errors='Нельзя добавлять новые тренировки в Архив';
+         if ($programId!="NULL") {
+             trainingTasksService::create($input);
+             $status='Тренировка успешно добавлена!';
          } else {
-             $errors='Ошибка!';
+             throw new Exception('Нельзя добавлять новые тренировки в Архив');
          }
+         return redirect()->route('list-tasks', compact('programId', 'programName'))
+             ->with('status', $status);
+     }catch (Exception $exception){
+        $errors=$exception->getMessage();
+        return back()->withErrors($errors);
      }
 
-     return redirect()->route('list-tasks', compact('programId', 'programName'))
-         ->with('status', $status)
-         ->with('errors', $errors);
  }
 
  public function deleteTasks($taskId)
  {
-     $isDeleted=trainingTasksService::delete($taskId);
-
      $programId=session('programId');
      $programName=session('programName');
-     $status="";
-     $errors="";
 
-     if ($isDeleted){
+     try {
+         trainingTasksService::delete($taskId);
          $status='Тренировка успешно удалена!';
-     } else{
-         $errors='Ошибка!';
+         return redirect()->route('list-tasks', compact('programId', 'programName'))
+             ->with('status', $status);
+     }catch (Exception $exception){
+         $errors=$exception->getMessage();
+         return back()->withErrors($errors);
      }
-
-     return redirect()->route('list-tasks', compact('programId', 'programName'))
-         ->with('status', $status)
-         ->with('errors', $errors);
  }
 
  public function showFullTask($taskId)
  {
-     $fullTask=trainingTasksService::getFullTask($taskId);
-     return view('admin.pages.tasks.full-task',compact('fullTask'));
+     try {
+         $fullTask=trainingTasksService::getFullTask($taskId);
+         return view('admin.pages.tasks.full-task',compact('fullTask'));
+     }catch (Exception $exception){
+         $errors=$exception->getMessage();
+         return back()->withErrors($errors);
+     }
  }
 
 
  public function updateTasks(TaskRequest $request)
  {
-     //VERSION METHOD BASED ON VALIDATION
-
+    // Validation is ON
      $input=$request->all();
      $programId = session('programId');
      $programName = session('programName');
-
-     trainingTasksService::update($input);
-
-     $status = 'Тренировка успешно сохранена!';
-
-     return redirect()->route('list-tasks', compact('programId', 'programName'))
-         ->with('status', $status);
+     try {
+         trainingTasksService::update($input);
+         $status = 'Тренировка успешно сохранена!';
+         return redirect()->route('list-tasks', compact('programId', 'programName'))
+             ->with('status', $status);
+     }catch (Exception $exception){
+         $errors=$exception->getMessage();
+         return back()->withErrors($errors);
+     }
  }
-
-    /*public function updateTasks(Request $request) // LAST VERSION METHOD BASED ON EXCEPTIONS
-    {
-
-        $input=$request->all();
-        $programId = session('programId');
-        $programName = session('programName');
-
-        try {
-            trainingTasksService::update($input);
-            $status = 'Тренировка успешно сохранена!';
-        }
-        catch (\Throwable $exception) {
-
-            $errors=$exception->getMessage();
-
-            return back()->withErrors($errors);
-        }
-
-        return redirect()->route('list-tasks', compact('programId', 'programName'))
-            ->with('status', $status);
-    } */
 
 }

@@ -4,73 +4,65 @@ namespace App\Http\Controllers\Pages;
 
 use App\Classes\Services\TrainingProgramsService;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProgramRequest;
 use Illuminate\Http\Request;
+use Exception;
 
 class ProgramsController extends Controller
 {
     //programs controller
  public function listTrainingPrograms()
  {
-     $listTrainingPrograms=TrainingProgramsService::getAll();
-     return view('admin.pages.programs.training-programs',compact('listTrainingPrograms'));
- }
+     try{
+         $listTrainingPrograms=TrainingProgramsService::getAll();
+         return view('admin.pages.programs.training-programs',compact('listTrainingPrograms'));
+     }catch (Exception $exception){
+         $errors=$exception->getMessage();
+         return back()->withErrors($errors);
+     }
+  }
 
- public  function addPrograms(Request $request)
+ public function addPrograms(ProgramRequest $request)
  {
      $input=$request->all();
-     $added=trainingProgramsService::create($input);
 
-     $status="";
-     $errors="";
-
-     if ($added){
+     try {
+         trainingProgramsService::create($input);
          $status='Программа успешно добавлена!';
-     } else{
-         $errors='Ошибка!';
+         return redirect()->route('training-programs')
+             ->with('status', $status);
+     }catch (Exception $exception){
+         $errors=$exception->getMessage();
+         return back()->withErrors($errors);
      }
-
-     return redirect()->route('training-programs')
-         ->with('status', $status)
-         ->with('errors', $errors);
  }
 
  public function deletePrograms($programId)
  {
-     $deleted=TrainingProgramsService::delete($programId);
-
-     $status="";
-     $errors="";
-
-     if ($deleted){
-         $status='Программа успешно удалена, связанные с ней тренировки сохнранены в "Архив тренировок"';
-     } else{
-         $errors='Ошибка!';
-     }
-
-     return redirect()->route('training-programs')
-         ->with('status', $status)
-         ->with('errors', $errors);
+    try{
+        TrainingProgramsService::delete($programId);
+        $status='Программа успешно удалена, связанные с ней тренировки сохнранены в "Архив тренировок"';
+        return redirect()->route('training-programs')
+            ->with('status', $status);
+    }catch (Exception $exception){
+        $errors=$exception->getMessage();
+        return back()->withErrors($errors);
+    }
  }
 
- public function updatePrograms(Request $request)
+ public function updatePrograms(ProgramRequest $request)
  {
      $input=$request->all();
-     $updated=trainingProgramsService::update($input);
-
-     $status="";
-     $errors="";
-
-     if ($updated){
+     try {
+         trainingProgramsService::update($input);
          $status='Программа успешно сохранена!';
-     } else{
-         $errors='Ошибка!';
+         return redirect()->route('training-programs')
+             ->with('status', $status);
+     }catch (Exception $exception){
+         $errors=$exception->getMessage();
+         return back()->withErrors($errors);
      }
-
-     return redirect()->route('training-programs')
-         ->with('status', $status)
-         ->with('errors', $errors);
  }
-
 
 }
 
