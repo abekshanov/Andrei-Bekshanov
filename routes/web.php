@@ -15,10 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//на тестовую страницу
-Route::get('/test/mvc-page/{title}', 'tests\testcontroller1@index')->name('mvc-page');
-
-
 
 Auth::routes();
 
@@ -70,3 +66,8 @@ Route::get('/admin/pages/delete-task-db/{taskId}','Pages\TasksController@deleteT
 // на список стандартных заданий
 Route::get('/admin/pages/list-tests', 'Pages\TestsController@listTests')->name('list-tests');
 
+// на вывод одного теста для Изменения/удаления
+Route::get('/admin/pages/full-test/{testId}-{modelName}','Pages\TestsController@fullTest')->name('full-test');
+
+// на контроллер изменения теста
+Route::post('/admin/pages/update-test-data','Pages\TestsController@updateTests')->name('update-test-data');

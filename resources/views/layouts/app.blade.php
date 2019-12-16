@@ -31,7 +31,6 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <a class="navbar-brand" href="{{ route('mvc-page',['title'=>'Моя страница']) }}">mvc-page</a>
                 <a class="navbar-brand" href="{{ route('training-programs') }}">Программы тренировок</a>
                 <div class="btn-group">
                     <a href="#!" class="navbar-brand dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Тестирование</a>
