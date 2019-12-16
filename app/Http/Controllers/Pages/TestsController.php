@@ -32,7 +32,7 @@ class TestsController extends Controller
             elseif ($modelName=='ForRepsTest') $fullTest=ForRepsTestService::getById($testId);
             elseif ($modelName=='ForTimeTest') $fullTest=ForTimeTestService::getById($testId);
 
-            return view('admin.pages.tests.full-strength-test', compact('fullTest', 'modelName'));
+            return view('admin.pages.tests.full-test', compact('fullTest', 'modelName'));
         }catch (Exception $exception){
             $errors=$exception->getMessage();
             return back()->withErrors($errors);

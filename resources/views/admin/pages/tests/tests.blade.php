@@ -3,7 +3,10 @@
 @section('content')
     <div class="container">
         <div class="row m-0">
-{{--            <a href="{{URL::previous()}}" class="col-3 btn btn-sm btn-primary  my-3" >Назад</a>--}}
+{{--            <a href="{{}}" class="col-3 btn btn-sm btn-primary  my-3" >Добавить новый тест</a>--}}
+        </div>
+        <div class="row m-0">
+            <a href="{{URL::previous()}}" class="col-3 btn btn-sm btn-primary  my-3" >Назад</a>
         </div>
         <table>
             <thead>Силовые тесты:</thead>
