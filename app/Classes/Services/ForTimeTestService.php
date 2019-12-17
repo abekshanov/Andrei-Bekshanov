@@ -10,7 +10,7 @@ class ForTimeTestService
     public static function create($inputData)
     {
         $tests = new ForTimeTest();
-        $tests->name = $inputData['header'];
+        $tests->name = $inputData['name'];
         $created=$tests->save();
         return $created;
     }

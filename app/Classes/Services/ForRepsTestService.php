@@ -10,7 +10,7 @@ class ForRepsTestService
     public static function create($inputData)
     {
         $tests = new ForRepsTest();
-        $tests->name = $inputData['header'];
+        $tests->name = $inputData['name'];
         $created=$tests->save();
         return $created;
     }

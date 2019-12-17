@@ -39,14 +39,33 @@ class TestsController extends Controller
         }
     }
 
+    public function addTests(Request $request)
+    {
+        try {
+            $input=$request->all();
+
+            if ($input['modelName']=='StrengthTest') StrengthTestService::create($input);
+            elseif ($input['modelName']=='ForRepsTest') ForRepsTestService::create($input);
+            elseif ($input['modelName']=='ForTimeTest') ForTimeTestService::create($input);
+
+
+            $status="Данные добавлены успешно!";
+            return redirect()->route('list-tests')->with('status', $status);
+        }catch (Exception $exception){
+            $errors=$exception->getMessage();
+            return back()->withErrors($errors);
+        }
+    }
+
+
     public function updateTests(Request $request)
     {
         try {
             $input=$request->all();
 
-            if ($input['modelName']=='StrengthTest') $fullTest=StrengthTestService::update($input);
-            elseif ($input['modelName']=='ForRepsTest') $fullTest=ForRepsTestService::update($input);
-            elseif ($input['modelName']=='ForTimeTest') $fullTest=ForTimeTestService::update($input);
+            if ($input['modelName']=='StrengthTest') StrengthTestService::update($input);
+            elseif ($input['modelName']=='ForRepsTest') ForRepsTestService::update($input);
+            elseif ($input['modelName']=='ForTimeTest') ForTimeTestService::update($input);
 
 
             $status="Данные сохранены успешно!";
@@ -56,5 +75,21 @@ class TestsController extends Controller
             return back()->withErrors($errors);
         }
     }
+
+
+    public function deleteTest($testId, $modelName)
+    {
+        try{
+            if ($modelName=='StrengthTest') StrengthTestService::delete($testId);
+            elseif ($modelName=='ForRepsTest') ForRepsTestService::delete($testId);
+            elseif ($modelName=='ForTimeTest') ForTimeTestService::delete($testId);
+            $status="Тест успешно удален!";
+            return redirect(route('list-tests'))->with('status', $status);;
+        }catch (Exception $exception){
+            $errors=$exception->getMessage();
+            return back()->withErrors($errors);
+        }
+    }
+
 
 }

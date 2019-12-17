@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row m-0">
-{{--            <a href="{{}}" class="col-3 btn btn-sm btn-primary  my-3" >Добавить новый тест</a>--}}
+            <a href="{{route('add-test')}}" class="col-3 btn btn-sm btn-primary  my-3" >Добавить новый тест</a>
         </div>
         <div class="row m-0">
             <a href="{{URL::previous()}}" class="col-3 btn btn-sm btn-primary  my-3" >Назад</a>
@@ -19,10 +19,10 @@
                         </a>
                     </td>
                     <td>
-  {{--                      <a href="{{route('delete-task', ['taskId' => $listStrengthTest->id])}}"
+                        <a href="{{route('delete-test', ['testId' => $listStrengthTest->id, 'modelName' => 'StrengthTest'])}}"
                            class="btn btn-sm btn-primary ml-3" >
                             Удалить
-                        </a>--}}
+                        </a>
                     </td>
                 </tr>
             @endforeach
@@ -39,10 +39,10 @@
                         </a>
                     </td>
                     <td>
-{{--                        <a href="{{route('delete-task', ['taskId' => $listStrengthTest->id])}}"
+                        <a href="{{route('delete-test', ['testId' => $listForRepsTest->id, 'modelName' => 'ForRepsTest'])}}"
                            class="btn btn-sm btn-primary ml-3" >
                             Удалить
-                        </a>--}}
+                        </a>
                     </td>
                 </tr>
             @endforeach
@@ -53,15 +53,15 @@
             @foreach($listForTimeTests as $listForTimeTest)
                 <tr>
                     <td>
-                        <a href="{{route('full-test',['testId'=>$listForTimeTest->id, 'modelName' => 'ForTimeTest'])}}"
+                        <a href="{{route('full-test',['testId' => $listForTimeTest->id, 'modelName' => 'ForTimeTest'])}}"
                            class=" list-group-item list-group-item-action list-group-item-info my-1 py-1">
                             {{$listForTimeTest->id." ".$listForTimeTest->name}}</a>
                     </td>
                     <td>
- {{--                       <a href="{{route('delete-task', ['taskId' => $listStrengthTest->id])}}"
+                        <a href="{{route('delete-test', ['testId'=>$listForTimeTest->id, 'modelName' => 'ForTimeTest'])}}"
                            class="btn btn-sm btn-primary ml-3" >
                             Удалить
-                        </a>--}}
+                        </a>
                     </td>
                 </tr>
             @endforeach

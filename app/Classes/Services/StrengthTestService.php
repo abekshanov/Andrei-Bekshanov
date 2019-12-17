@@ -10,7 +10,7 @@ class StrengthTestService
     public static function create($inputData)
     {
         $tests = new StrengthTest();
-        $tests->name = $inputData['header'];
+        $tests->name = $inputData['name'];
         $created=$tests->save();
         return $created;
     }
