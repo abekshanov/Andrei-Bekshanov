@@ -28,19 +28,21 @@
             <div class="container">
                 {{--верхнее меню--}}
 
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand" href="{{ url('/') }}">Страница приветствия
+                  {{--  {{ config('app.name', 'Laravel') }}--}}
                 </a>
-                <a class="navbar-brand" href="{{ route('training-programs') }}">Программы тренировок</a>
-                <div class="btn-group">
-                    <a href="#!" class="navbar-brand dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Тестирование</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{{route('list-tests')}}">Список стандартных заданий</a>
-                        <a class="dropdown-item" href="#!">Динамика результатов</a>
-                    </div>
-                </div>
-                <a class="navbar-brand" href="#!">Результаты</a>
 
+                @auth
+                    <a class="navbar-brand" href="{{ route('training-programs') }}">Программы тренировок</a>
+                    <div class="btn-group">
+                        <a href="#!" class="navbar-brand dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Тестирование</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{{route('list-tests')}}">Список стандартных заданий</a>
+                            <a class="dropdown-item" href="#!">Динамика результатов</a>
+                        </div>
+                    </div>
+                    <a class="navbar-brand" href="#!">Результаты</a>
+                @endauth
 
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
