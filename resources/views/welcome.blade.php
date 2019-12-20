@@ -68,7 +68,6 @@
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
-                        <a href="{{ route('mvc-page',['title'=>'Моя страница']) }}">mvc-page</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
