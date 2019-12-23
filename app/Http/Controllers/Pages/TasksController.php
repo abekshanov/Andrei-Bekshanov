@@ -11,8 +11,12 @@ use Illuminate\Http\Request;
 class TasksController extends Controller
 {
     //tasks controller
+ public function __construct()
+ {
+     $this->middleware('auth');
+ }
 
- public function listTrainingTasks($programId, $programName)
+    public function listTrainingTasks($programId, $programName)
  {
      session(['programId' => $programId]);
      session(['programName' => $programName]);

@@ -28,8 +28,8 @@
             <div class="container">
                 {{--верхнее меню--}}
 
-                <a class="navbar-brand" href="{{ url('/') }}">Страница приветствия
-                  {{--  {{ config('app.name', 'Laravel') }}--}}
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
                 </a>
 
                 @auth

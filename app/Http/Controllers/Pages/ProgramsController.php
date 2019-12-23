@@ -11,7 +11,13 @@ use Exception;
 class ProgramsController extends Controller
 {
     //programs controller
- public function listTrainingPrograms()
+
+ public function __construct()
+ {
+     $this->middleware('auth');
+ }
+
+    public function listTrainingPrograms()
  {
      try{
          $listTrainingPrograms=TrainingProgramsService::getAll();
