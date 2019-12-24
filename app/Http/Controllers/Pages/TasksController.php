@@ -38,13 +38,8 @@ class TasksController extends Controller
      $programName=session('programName');
 
      try{
-
-         if ($programId!="NULL") {
-             trainingTasksService::create($input);
-             $status='Тренировка успешно добавлена!';
-         } else {
-             throw new Exception('Нельзя добавлять новые тренировки в Архив');
-         }
+         trainingTasksService::create($input);
+         $status='Тренировка успешно добавлена!';
          return redirect()->route('list-tasks', compact('programId', 'programName'))
              ->with('status', $status);
      }catch (Exception $exception){

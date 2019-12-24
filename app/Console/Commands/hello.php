@@ -11,14 +11,14 @@ class hello extends Command
      *
      * @var string
      */
-    protected $signature = 'hello1';
+    protected $signature = 'deploy';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command executes git status';
+    protected $description = 'Command executes changes of current project to github and to hosting server';
 
     /**
      * Create a new command instance.
@@ -38,7 +38,28 @@ class hello extends Command
     public function handle()
     {
         //
-       if (system('git status')) $this->info('OK!');
-       else $this->info('FAILED!');
+ /*       $commitComment = $this->ask('Опишите какие изменения внесены в проект: ');
+ //на клиенте
+        system('git add .');
+        system('git commit -m "description....."');
+        system('git checkout master');
+        system('git merge нужная_ветка');
+        system('git push origin master');
+        system('git checkout нужная_ветка');
+ //на сервер
+        system('ssh egoist68@egoist68.beget.tech');
+        system('cd athlete-profile.loc');
+        system('git pull origin');
+        system('php artisan migrate');
+        system('exit');
+
+
+
+        if ($ok) {
+            $this->info('OK!');
+        }
+        else {
+            $this->info('FAILED!');
+        }*/
     }
 }

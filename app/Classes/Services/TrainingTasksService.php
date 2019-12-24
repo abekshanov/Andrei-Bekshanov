@@ -26,10 +26,7 @@ class trainingTasksService
     public static function getTaskList($programId)
     {
         $tasks= new TrainingTask();
-        if ($programId=="NULL") { $listTrainingTasks=$tasks::whereNull('training_programs_id')->get(); }
-        else {
-            $listTrainingTasks = $tasks::where('training_programs_id', $programId)->get();
-        }
+        $listTrainingTasks = $tasks::where('training_programs_id', $programId)->get();
         return $listTrainingTasks;
     }
 
