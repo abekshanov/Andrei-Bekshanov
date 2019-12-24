@@ -38,20 +38,20 @@ class hello extends Command
     public function handle()
     {
         //
- /*       $commitComment = $this->ask('Опишите какие изменения внесены в проект: ');
+ /*//       $commitComment = $this->ask('Опишите какие изменения внесены в проект: ');
  //на клиенте
         system('git add .');
-        system('git commit -m "description....."');
+        system('git commit -m "changed interface for tests"');
         system('git checkout master');
-        system('git merge нужная_ветка');
+        system('git merge crud_remaining_tables');
         system('git push origin master');
-        system('git checkout нужная_ветка');
+        system('git checkout crud_remaining_tables');
  //на сервер
         system('ssh egoist68@egoist68.beget.tech');
         system('cd athlete-profile.loc');
         system('git pull origin');
         system('php artisan migrate');
-        system('exit');
+        system('exit');*/
 
 
 
@@ -60,6 +60,6 @@ class hello extends Command
         }
         else {
             $this->info('FAILED!');
-        }*/
+        }
     }
 }

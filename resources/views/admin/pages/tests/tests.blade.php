@@ -15,7 +15,7 @@
                     <td>
                         <a href="{{route('full-test',['testId' => $listStrengthTest->id, 'modelName' => 'StrengthTest'])}}"
                            class=" list-group-item list-group-item-action list-group-item-info my-1 py-1">
-                            {{$listStrengthTest->id." ".$listStrengthTest->name}}
+                            {{$listStrengthTest->name}}
                         </a>
                     </td>
                     <td>
@@ -35,7 +35,7 @@
                     <td>
                         <a href="{{route('full-test',['testId'=>$listForRepsTest->id, 'modelName' => 'ForRepsTest'])}}"
                            class=" list-group-item list-group-item-action list-group-item-info my-1 py-1">
-                            {{$listForRepsTest->id." ".$listForRepsTest->name}}
+                            {{$listForRepsTest->name}}
                         </a>
                     </td>
                     <td>
@@ -55,7 +55,7 @@
                     <td>
                         <a href="{{route('full-test',['testId' => $listForTimeTest->id, 'modelName' => 'ForTimeTest'])}}"
                            class=" list-group-item list-group-item-action list-group-item-info my-1 py-1">
-                            {{$listForTimeTest->id." ".$listForTimeTest->name}}</a>
+                            {{$listForTimeTest->name}}</a>
                     </td>
                     <td>
                         <a href="{{route('delete-test', ['testId'=>$listForTimeTest->id, 'modelName' => 'ForTimeTest'])}}"
