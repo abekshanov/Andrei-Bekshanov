@@ -41,11 +41,20 @@ class DeployGithub extends Command
         $commitComment = $this->ask('Опишите какие ИЗМЕНЕИЯ внесены в проект: ');
         $currentBranch = $this->ask('Укажите ИМЯ ВЕТКИ, на которой были изменения: ');
         //на клиенте
-        system('git add .');
+/*        system('git add .');
         system('git commit -m "'.$commitComment.'"');
         system('git checkout master');
         system('git merge '.$currentBranch);
         system('git push origin master');
-        system('git checkout '.$currentBranch);
+        system('git checkout '.$currentBranch);*/
+
+        system("
+            git add .;
+            git commit -m \"$commitComment\";
+            git checkout master;
+            git merge $currentBranch;
+            git push origin master;
+            git checkout $currentBranch;
+        ");
     }
 }

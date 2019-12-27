@@ -38,11 +38,14 @@ class DeployHosting extends Command
     public function handle()
     {
         //на сервер
-        system('ssh egoist68@egoist68.beget.tech');
-        system('cd athlete-profile.loc');
-        system('git pull origin');
-        system('composer-php7.2 install');
-        system('php artisan migrate');
-        system('exit');
+        system('
+            ssh egoist68@egoist68.beget.tech << EOF
+                cd athlete-profile.loc
+                git pull origin
+                composer-php7.2 install
+                php artisan migrate
+                exit
+            EOF
+        ');
     }
 }
