@@ -38,28 +38,25 @@ class hello extends Command
     public function handle()
     {
         //
- /*//       $commitComment = $this->ask('Опишите какие изменения внесены в проект: ');
- //на клиенте
+        $commitComment = $this->ask('Опишите какие ИЗМЕНЕИЯ внесены в проект: ');
+        $currentBranch = $this->ask('Укажите ИМЯ ВЕТКИ, на которой были изменения: ');
+        //на клиенте
         system('git add .');
-        system('git commit -m "changed interface for tests"');
+        system('git commit -m "'.$commitComment.'"');
         system('git checkout master');
-        system('git merge crud_remaining_tables');
+        system('git merge '.$currentBranch);
         system('git push origin master');
-        system('git checkout crud_remaining_tables');
- //на сервер
-        system('ssh egoist68@egoist68.beget.tech');
-        system('cd athlete-profile.loc');
-        system('git pull origin');
-        system('php artisan migrate');
-        system('exit');*/
+        system('git checkout '.$currentBranch);
 
-
-
-        if ($ok) {
-            $this->info('OK!');
+        //на сервер
+        if ($this->confirm('Вносим изменения на хостинг? [y|n]:')){
+            system('ssh egoist68@egoist68.beget.tech');
+            system('cd athlete-profile.loc');
+            system('git pull origin');
+            system('composer-php7.2 install');
+            system('php artisan migrate');
+            system('exit');
         }
-        else {
-            $this->info('FAILED!');
-        }
+
     }
 }
