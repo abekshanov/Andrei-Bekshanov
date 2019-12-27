@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\DeployGithub;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -14,7 +15,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
-        Commands\hello::class,
+        Commands\DeployGithub::class,
+        Commands\DeployHosting::class,
     ];
 
     /**

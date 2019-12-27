@@ -4,21 +4,21 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class hello extends Command
+class DeployGithub extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'deploy';
+    protected $signature = 'deploy:github';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command executes changes of current project to github and to hosting server';
+    protected $description = 'Command executes changes of current project to github';
 
     /**
      * Create a new command instance.
@@ -47,16 +47,5 @@ class hello extends Command
         system('git merge '.$currentBranch);
         system('git push origin master');
         system('git checkout '.$currentBranch);
-
-        //на сервер
-        if ($this->confirm('Вносим изменения на хостинг?', true)){
-            system('ssh egoist68@egoist68.beget.tech');
-            system('cd athlete-profile.loc');
-            system('git pull origin');
-            system('composer-php7.2 install');
-            system('php artisan migrate');
-            system('exit');
-        }
-
     }
 }
