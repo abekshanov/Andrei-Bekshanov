@@ -41,21 +41,21 @@ class hello extends Command
         $commitComment = $this->ask('Опишите какие ИЗМЕНЕИЯ внесены в проект: ');
         $currentBranch = $this->ask('Укажите ИМЯ ВЕТКИ, на которой были изменения: ');
         //на клиенте
-        system('git add .');
-        system('git commit -m "'.$commitComment.'"');
-        system('git checkout master');
-        system('git merge '.$currentBranch);
-        system('git push origin master');
-        system('git checkout '.$currentBranch);
+        exec('git add .');
+        exec('git commit -m "'.$commitComment.'"');
+        exec('git checkout master');
+        exec('git merge '.$currentBranch);
+        exec('git push origin master');
+        exec('git checkout '.$currentBranch);
 
         //на сервер
         if ($this->confirm('Вносим изменения на хостинг? [y|n]:')){
-            system('ssh egoist68@egoist68.beget.tech');
-            system('cd athlete-profile.loc');
-            system('git pull origin');
-            system('composer-php7.2 install');
-            system('php artisan migrate');
-            system('exit');
+            exec('ssh egoist68@egoist68.beget.tech');
+            exec('cd athlete-profile.loc');
+            exec('git pull origin');
+            exec('composer-php7.2 install');
+            exec('php artisan migrate');
+            exec('exit');
         }
 
     }
