@@ -11,7 +11,14 @@ return [
             'users' => 'c,r,u,d',
             'profile' => 'r,u'
         ],
+        'coach' => [
+            'users' => 'c,r,u,d',
+            'profile' => 'r,u'
+        ],
         'user' => [
+            'profile' => 'r,u'
+        ],
+        'athlete' => [
             'profile' => 'r,u'
         ],
     ],
