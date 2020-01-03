@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('index');
 
 
 Auth::routes();
@@ -101,3 +101,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:superadministrator|adm
         ->name('delete-test');
 
 });
+
+Route::get('/msg', function (){
+    return view('pages.system-message');
+})->name('msg');

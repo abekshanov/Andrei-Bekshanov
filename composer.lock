@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3013e1e03db1cca2c41d9c4cdf28803d",
+    "content-hash": "dc5e45bb27f96aa0bd9ae100096d3ecd",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -379,6 +379,48 @@
                 "trusted proxy"
             ],
             "time": "2019-09-03T16:45:42+00:00"
+        },
+        {
+            "name": "icweb/trusty",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/icweb/laratrust-ui.git",
+                "reference": "bb24a1db114a28f6cf8a2d422cd0154785753679"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/icweb/laratrust-ui/zipball/bb24a1db114a28f6cf8a2d422cd0154785753679",
+                "reference": "bb24a1db114a28f6cf8a2d422cd0154785753679",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3",
+                "santigarcor/laratrust": "5.2.*"
+            },
+            "type": "laravel",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Icweb\\Trusty\\App\\Providers\\TrustyServiceProvider"
+                    ],
+                    "aliases": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Icweb\\Trusty\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Ian Conway",
+                    "email": "iaay@protonmail.com"
+                }
+            ],
+            "description": "User interface for Laratrust",
+            "time": "2019-07-07T19:21:02+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -5932,7 +5974,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "icweb/trusty": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

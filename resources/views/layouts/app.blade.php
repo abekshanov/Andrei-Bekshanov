@@ -29,10 +29,11 @@
                 {{--верхнее меню--}}
 
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Athlete-profile') }}
                 </a>
 
                 @auth
+                    <a class="navbar-brand " href="{{ route('trusty.index') }}">Управление пользователями</a>
                     <a class="navbar-brand" href="{{ route('training-programs') }}">Программы тренировок</a>
                     <div class="btn-group">
                         <a href="#!" class="navbar-brand dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Тестирование</a>
