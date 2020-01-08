@@ -16,7 +16,7 @@
                 Удалить программу
             </a>
         </div> <!--endrow-->
-        <h4>{{session('programName')}}</h4>
+        <h4>Тренировки из программы: {{session('programName')}}</h4>
         <table>
            @foreach($listTrainingTasks as $listTrainingTask)
                <tr>

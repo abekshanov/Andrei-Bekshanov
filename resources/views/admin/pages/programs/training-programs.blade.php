@@ -6,7 +6,7 @@
             <a href="{{route('add-program')}}" class="col-3 btn btn-sm btn-primary  my-3 ">Добавить новую программу</a>
             <div class="col-9"></div>
         </div> <!--endRow-->
-        <h4>Программы тренировок</h4>
+        <h4>Программы</h4>
         <table>
             @foreach($listTrainingPrograms as $listTrainingProgram)
                 <tr>

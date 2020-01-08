@@ -16,6 +16,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    {{--    из trusty.layout--}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -27,35 +29,47 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 {{--верхнее меню--}}
-
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     {{ config('app.name', 'Athlete-profile') }}
                 </a>
-
                 @auth
-                    <a class="navbar-brand " href="{{ route('trusty.index') }}">Управление пользователями</a>
-                    <a class="navbar-brand" href="{{ route('training-programs') }}">Программы тренировок</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <a class="navbar-brand" href="#!">Мои тренировки</a>
+                    <a class="navbar-brand" href="#!">Мои показатели</a>
                     <div class="btn-group">
-                        <a href="#!" class="navbar-brand dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Тестирование</a>
+                        <a href="#!" class="navbar-brand dropdown-toggle" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Тестирование</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{{route('list-tests')}}">Список стандартных заданий</a>
-                            <a class="dropdown-item" href="#!">Динамика результатов</a>
+                            <a class="dropdown-item" href="{{route('list-tests')}}">Тесты</a>
+                            <a class="dropdown-item" href="#!">Результаты</a>
+                            <a class="dropdown-item" href="#!">Динамика</a>
                         </div>
                     </div>
-                    <a class="navbar-brand" href="#!">Результаты</a>
                 @endauth
+                @role(['superadministrator', 'coach', 'admin'])
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <!-- Left Side Of Navbar -->
+                        <ul class="navbar-nav mr-auto">
 
+                                <div class="btn-group">
+                                    <a href="#!" class="navbar-brand dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                                       aria-expanded="false">Пользователи</a>
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="{{ route('trusty.users.index') }}">Все пользователи</a>
+                                        <a class="dropdown-item" href="{{ route('trusty.roles.index') }}">Роли</a>
+                                        <a class="dropdown-item" href="{{ route('trusty.permissions.index') }}">Права</a>
+                                    </div>
+                                </div>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                                <a class="navbar-brand" href="{{ route('training-programs') }}">Программы</a>
 
-                    </ul>
-
+                                <a class="navbar-brand" href="#!">Отчеты атлетов</a>
+                        </ul>
+                    @endrole
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->

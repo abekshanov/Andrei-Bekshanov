@@ -21,6 +21,8 @@ Auth::routes();
 // страница home
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+
 // группа маршрутов для админ панели
 Route::group(['prefix' => 'admin', 'middleware' => ['role:superadministrator|admin|coach']], function (){
 
@@ -75,32 +77,32 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:superadministrator|adm
     Route::get('/pages/delete-task-db/{taskId}','Pages\TasksController@deleteTasks')
         ->name('delete-task');
 
-    // на список стандартных заданий
-    Route::get('/pages/list-tests', 'Pages\TestsController@listTests')
-        ->name('list-tests');
-
-    // на вывод одного теста для Изменения/удаления
-    Route::get('/pages/full-test/{testId}-{modelName}','Pages\TestsController@fullTest')
-        ->name('full-test');
-
-    // на контроллер изменения теста
-    Route::post('/pages/update-test-data','Pages\TestsController@updateTests')
-        ->name('update-test-data');
-
-    // на страницу добавления нового теста
-    Route::get('/pages/add-test', function (){
-        return view('admin.pages.tests.add-test');
-    })->name('add-test');
-
-    // на контроллер добавления данных нового теста в хранилище
-    Route::post('/pages/add-test-data','Pages\TestsController@addTests')
-        ->name('add-test-data');
-
-    // на контроллер удаления теста
-    Route::get('/pages/delete-test/{testId}-{modelName}','Pages\TestsController@deleteTest')
-        ->name('delete-test');
-
 });
+
+// на список стандартных заданий
+Route::get('/pages/list-tests', 'Pages\TestsController@listTests')
+    ->name('list-tests');
+
+// на вывод одного теста для Изменения/удаления
+Route::get('/pages/full-test/{testId}-{modelName}','Pages\TestsController@fullTest')
+    ->name('full-test');
+
+// на контроллер изменения теста
+Route::post('/pages/update-test-data','Pages\TestsController@updateTests')
+    ->name('update-test-data');
+
+// на страницу добавления нового теста
+Route::get('/pages/add-test', function (){
+    return view('admin.pages.tests.add-test');
+})->name('add-test');
+
+// на контроллер добавления данных нового теста в хранилище
+Route::post('/pages/add-test-data','Pages\TestsController@addTests')
+    ->name('add-test-data');
+
+// на контроллер удаления теста
+Route::get('/pages/delete-test/{testId}-{modelName}','Pages\TestsController@deleteTest')
+    ->name('delete-test');
 
 Route::get('/msg', function (){
     return view('pages.system-message');

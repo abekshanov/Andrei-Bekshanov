@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'middleware' => ['web', 'auth'],
+    'middleware' => ['web', 'auth', 'role:superadministrator|admin|coach'],
 
 
     /*
