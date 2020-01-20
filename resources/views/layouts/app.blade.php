@@ -32,44 +32,55 @@
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     {{ config('app.name', 'Athlete-profile') }}
                 </a>
-                @auth
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                    <a class="navbar-brand" href="#!">Мои тренировки</a>
-                    <a class="navbar-brand" href="#!">Мои показатели</a>
-                    <div class="btn-group">
-                        <a href="#!" class="navbar-brand dropdown-toggle" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">Тестирование</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{{route('list-tests')}}">Тесты</a>
-                            <a class="dropdown-item" href="#!">Результаты</a>
-                            <a class="dropdown-item" href="#!">Динамика</a>
-                        </div>
-                    </div>
-                @endauth
-                @role(['superadministrator', 'coach', 'admin'])
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <!-- Left Side Of Navbar -->
-                        <ul class="navbar-nav mr-auto">
 
-                                <div class="btn-group">
-                                    <a href="#!" class="navbar-brand dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                                       aria-expanded="false">Пользователи</a>
-
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="{{ route('trusty.users.index') }}">Все пользователи</a>
-                                        <a class="dropdown-item" href="{{ route('trusty.roles.index') }}">Роли</a>
-                                        <a class="dropdown-item" href="{{ route('trusty.permissions.index') }}">Права</a>
-                                    </div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav mr-auto">
+                        @auth
+                            <a class="navbar-brand" href="#!">Мои тренировки</a>
+                            <a class="navbar-brand" href="#!">Мои показатели</a>
+                            <div class="btn-group">
+                                <a href="#!" class="navbar-brand dropdown-toggle" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">Тестирование</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{route('list-tests')}}">Тесты</a>
+                                    <a class="dropdown-item" href="#!">Результаты</a>
+                                    <a class="dropdown-item" href="#!">Динамика</a>
                                 </div>
+                            </div>
+                        @endauth
+                        @role(['superadministrator', 'admin'])
+                            <div class="btn-group">
+                                <a href="#!" class="navbar-brand dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">Пользователи</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{ route('trusty.users.index') }}">Все пользователи</a>
+                                    <a class="dropdown-item" href="{{ route('trusty.roles.index') }}">Роли</a>
+                                    <a class="dropdown-item" href="{{ route('trusty.permissions.index') }}">Права</a>
+                                </div>
+                            </div>
+                        @endrole
+                        @role(['coach'])
+                            <div class="btn-group">
+                                <a href="#!" class="navbar-brand dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">Атлеты</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#!">1</a>
+                                    <a class="dropdown-item" href="#!">2</a>
+                                    <a class="dropdown-item" href="#!">3</a>
+                                </div>
+                            </div>
+                            <a class="navbar-brand" href="{{ route('training-programs') }}">Программы</a>
+                            <a class="navbar-brand" href="#!">Отчеты атлетов</a>
+                        @endrole
+                    </ul>
 
-                                <a class="navbar-brand" href="{{ route('training-programs') }}">Программы</a>
-
-                                <a class="navbar-brand" href="#!">Отчеты атлетов</a>
-                        </ul>
-                    @endrole
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -102,7 +113,7 @@
                             </li>
                         @endguest
                     </ul>
-                </div>
+                </div> {{-- div Collapse--}}
             </div>
         </nav>
 

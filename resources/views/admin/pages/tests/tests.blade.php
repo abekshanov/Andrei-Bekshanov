@@ -24,6 +24,12 @@
                             Удалить
                         </a>
                     </td>
+                    <td>
+                        <a href="{{route('result-test', ['testId' => $listStrengthTest->id, 'modelName' => 'StrengthTest'])}}"
+                           class="btn btn-sm btn-primary ml-3" >
+                            Внести результат
+                        </a>
+                    </td>
                 </tr>
             @endforeach
         </table>
@@ -44,6 +50,12 @@
                             Удалить
                         </a>
                     </td>
+                    <td>
+                        <a href="{{route('result-test', ['testId' => $listForRepsTest->id, 'modelName' => 'ForRepsTest'])}}"
+                           class="btn btn-sm btn-primary ml-3" >
+                            Внести результат
+                        </a>
+                    </td>
                 </tr>
             @endforeach
         </table>
@@ -61,6 +73,12 @@
                         <a href="{{route('delete-test', ['testId'=>$listForTimeTest->id, 'modelName' => 'ForTimeTest'])}}"
                            class="btn btn-sm btn-primary ml-3" >
                             Удалить
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{route('result-test', ['testId'=>$listForTimeTest->id, 'modelName' => 'ForTimeTest'])}}"
+                           class="btn btn-sm btn-primary ml-3" >
+                            Внести результат
                         </a>
                     </td>
                 </tr>

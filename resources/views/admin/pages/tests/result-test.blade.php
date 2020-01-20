@@ -7,12 +7,12 @@
             <div class="col-6"></div>
         </div>
 
-        <form method="post"  action="{{route('update-test-data')}}" >
+        <form method="post"  action="{{route('add-result-test')}}" >
             {{ csrf_field() }}
             <input type="hidden" name="modelName"  value="{{$modelName}}">
-            <input type="hidden" name="id"  value="{{$fullTest->id}}">
-            <p>Название теста</p>
-            <input type="text" name="name" value="{{$fullTest->name}}" id="" class="w-100">
+            <input type="hidden" name="testId"  value="{{$fullTest->id}}">
+            <p>Название теста: {{$fullTest->name}} </p>
+            <input type="number" name="minutes" value="00" id=""  class="col-2"> : <input type="number" name="seconds" value="00" id="" class="col-2">
             <input type="submit" value="Сохранить">
         </form>
     </div>

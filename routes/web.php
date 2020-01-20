@@ -79,6 +79,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:superadministrator|adm
 
 });
 
+/*---------------маршруты доступны всем аутентифицированным пользователям*/
 // на список стандартных заданий
 Route::get('/pages/list-tests', 'Pages\TestsController@listTests')
     ->name('list-tests');
@@ -103,6 +104,21 @@ Route::post('/pages/add-test-data','Pages\TestsController@addTests')
 // на контроллер удаления теста
 Route::get('/pages/delete-test/{testId}-{modelName}','Pages\TestsController@deleteTest')
     ->name('delete-test');
+
+// на контроллер вывода теста и формы ввода результата
+Route::get('/pages/result-test/{testId}-{modelName}','Pages\TestsController@inputResultTest')
+    ->name('result-test');
+
+// на контроллер сохранения введеного результата
+Route::post('/pages/add-result-test','Pages\TestsController@addResultTest')
+    ->name('add-result-test');
+
+// на контроллер  вывода результатов теста
+Route::get('/pages/list-result-test','Pages\TestsController@listResultTests')
+    ->name('list-result-test');
+/*------------*/
+
+
 
 Route::get('/msg', function (){
     return view('pages.system-message');

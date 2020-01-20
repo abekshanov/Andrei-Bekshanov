@@ -31,6 +31,29 @@ namespace App{
 
 namespace App{
 /**
+ * App\ForTimeHistoryTest
+ *
+ * @property int $id
+ * @property int $users_id
+ * @property int $for_time_tests_id
+ * @property string $result
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ForTimeHistoryTest newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ForTimeHistoryTest newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ForTimeHistoryTest query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ForTimeHistoryTest whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ForTimeHistoryTest whereForTimeTestsId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ForTimeHistoryTest whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ForTimeHistoryTest whereResult($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ForTimeHistoryTest whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ForTimeHistoryTest whereUsersId($value)
+ */
+	class ForTimeHistoryTest extends \Eloquent {}
+}
+
+namespace App{
+/**
  * App\ForRepsTest
  *
  * @property int $id
@@ -46,6 +69,29 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ForRepsTest whereUpdatedAt($value)
  */
 	class ForRepsTest extends \Eloquent {}
+}
+
+namespace App{
+/**
+ * App\StrengthHistoryTest
+ *
+ * @property int $id
+ * @property int $users_id
+ * @property int $strength_tests_id
+ * @property float $result
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\StrengthHistoryTest newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\StrengthHistoryTest newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\StrengthHistoryTest query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\StrengthHistoryTest whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\StrengthHistoryTest whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\StrengthHistoryTest whereResult($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\StrengthHistoryTest whereStrengthTestsId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\StrengthHistoryTest whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\StrengthHistoryTest whereUsersId($value)
+ */
+	class StrengthHistoryTest extends \Eloquent {}
 }
 
 namespace App{
@@ -115,6 +161,29 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\TrainingTask whereUpdatedAt($value)
  */
 	class TrainingTask extends \Eloquent {}
+}
+
+namespace App{
+/**
+ * App\ForRepsHistoryTest
+ *
+ * @property int $id
+ * @property int $users_id
+ * @property int $for_reps_tests_id
+ * @property int $result
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ForRepsHistoryTest newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ForRepsHistoryTest newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ForRepsHistoryTest query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ForRepsHistoryTest whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ForRepsHistoryTest whereForRepsTestsId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ForRepsHistoryTest whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ForRepsHistoryTest whereResult($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ForRepsHistoryTest whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ForRepsHistoryTest whereUsersId($value)
+ */
+	class ForRepsHistoryTest extends \Eloquent {}
 }
 
 namespace App{
