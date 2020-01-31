@@ -12,7 +12,11 @@
             <input type="hidden" name="modelName"  value="{{$modelName}}">
             <input type="hidden" name="testId"  value="{{$fullTest->id}}">
             <p>Название теста: {{$fullTest->name}} </p>
-            <input type="number" name="minutes" value="00" id=""  class="col-2"> : <input type="number" name="seconds" value="00" id="" class="col-2">
+            @if ($modelName=='ForTimeTest')
+                <input type="number" name="minutes" value="00" id=""  class="col-2"> : <input type="number" name="seconds" value="00" id="" class="col-2">
+            @else
+                <input type="text" name="result"  id=""  class="col-2">
+            @endif
             <input type="submit" value="Сохранить">
         </form>
     </div>

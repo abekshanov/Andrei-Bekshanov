@@ -8,9 +8,12 @@ use App\Classes\Services\StrengthTestService;
 use App\Classes\Services\StrengthHistoryTestService;
 use App\Classes\Services\ForRepsHistoryTestService;
 use App\Classes\Services\ForTimeHistoryTestService;
+use App\Classes\Services\UserService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Exception;
+use Illuminate\Support\Facades\Auth;
+use function MongoDB\BSON\toJSON;
 
 class TestsController extends Controller
 {
@@ -150,6 +153,54 @@ class TestsController extends Controller
         }
     }
 
+    public function userFunctionalProfile($userId = null, $startDate = 0, $endDate = 0)
+    {
+        try {
+            if ($userId==null) {
+                $userId=Auth::user()->id;
+            }
 
+            /*если переданы параметры началная и конечная дата, то выводить за период
+              если даты не указаны, то выводить последнюю запись*/
+
+            $listResultStrengthTests=StrengthHistoryTestService::getByDateCurUser($userId, $startDate, $endDate);
+            $listResultForRepsTests=ForRepsHistoryTestService::getByDateCurUser($userId, $startDate, $endDate);
+            $listResultForTimeTests=ForTimeHistoryTestService::getByDateCurUser($userId, $startDate, $endDate);
+
+
+            return view('pages.functional-profile', compact(
+                'listResultStrengthTests',
+                'listResultForRepsTests',
+                'listResultForTimeTests'));
+        }catch (Exception $exception){
+            $errors=$exception->getMessage();
+            return back()->withErrors($errors);
+        }
+    }
+
+    public function vidgetFuncProfile()
+    {
+            return view('pages.vidget-functional-profile');
+    }
+
+    public function dataForVidgetFuncProfile()
+    {
+        if ($_POST['userId']) {
+            $listResultStrengthTests = StrengthHistoryTestService::getByDateCurUser($_POST['userId']);
+            $listResultForRepsTests = ForRepsHistoryTestService::getByDateCurUser($_POST['userId']);
+            $listResultForTimeTests = ForTimeHistoryTestService::getByDateCurUser($_POST['userId']);
+        }
+
+
+        return response()->json([$listResultStrengthTests, $listResultForRepsTests, $listResultForTimeTests], 200);
+
+    }
+
+    public function getAthletes()
+    {
+        $athletes=UserService::getAll();
+        return response()->json($athletes, 200);
+
+    }
 
 }

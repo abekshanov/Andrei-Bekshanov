@@ -36,6 +36,36 @@ class StrengthHistoryTestService
         return $list;
     }
 
+    public static function getByDateCurUser($curUser, $startDate=0, $endDate=0)
+    {
+        if ($startDate&&$endDate) {
+            /*если переданы параметры началная и конечная дата, то выводить за период*/
+            $list = DB::select("
+            select subselect.* from (
+                select sh.users_id, sh.strength_tests_id, sh.result, sh.created_at, sh.updated_at, s.name from strength_tests as s
+                    inner join strength_history_tests as sh
+                    on sh.strength_tests_id = s.id
+                where sh.users_id = ?
+                ) as subselect
+            where created_at < ?
+            and created_at > ?
+            ", [$curUser, $endDate, $startDate]);
+        } else {
+            /*если даты не указаны, то выводить последнюю запись по каждому тесту для текущего пользователя*/
+            $list = DB::select("
+                select sh.users_id, sh.strength_tests_id, sh.result, sh.created_at, sh.updated_at, s.name
+                from strength_history_tests as sh
+                    inner join (select strength_tests_id as tid, max(created_at) as mc
+                                from strength_history_tests
+                                where users_id = ?
+                                group by strength_tests_id) as ld
+                    on sh.strength_tests_id = ld.tid and sh.created_at=ld.mc
+                    inner join strength_tests as s
+                    on ld.tid = s.id
+            ", [$curUser]);
+        }
+        return $list;
+    }
 
 /*    public static function getById($id)
     {

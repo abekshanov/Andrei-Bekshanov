@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+{{--    вывод показателей для пользователя за период--}}
     <div class="container">
         <h6>Сила</h6>
         <ul>
@@ -26,7 +27,7 @@
             <li>
                 <?=$testResult->name." - ".$testResult->result;?>
             </li>
-        @endforeach
+          @endforeach
         </ul>
     </div>
 @endsection

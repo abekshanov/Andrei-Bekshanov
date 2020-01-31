@@ -77,7 +77,20 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:superadministrator|adm
     Route::get('/pages/delete-task-db/{taskId}','Pages\TasksController@deleteTasks')
         ->name('delete-task');
 
+
+
+
 });
+
+
+//-----------------маршруты доступные только для коучей----------------
+
+
+
+//-----------------маршруты доступные только для атлетов----------------
+
+
+
 
 /*---------------маршруты доступны всем аутентифицированным пользователям*/
 // на список стандартных заданий
@@ -113,9 +126,22 @@ Route::get('/pages/result-test/{testId}-{modelName}','Pages\TestsController@inpu
 Route::post('/pages/add-result-test','Pages\TestsController@addResultTest')
     ->name('add-result-test');
 
-// на контроллер  вывода результатов теста
+// на контроллер  вывода всех результатов теста за весь период
 Route::get('/pages/list-result-test','Pages\TestsController@listResultTests')
     ->name('list-result-test');
+
+// на контроллер  вывода последних результатов тестов аутентифицированного пользователя
+Route::get('/pages/functional-profile/{userId?}/{startDate?}/{endDate?}','Pages\TestsController@userFunctionalProfile')
+    ->name('functional-profile');
+
+// на вывод данных атлета
+Route::get('/pages/ajax', 'Pages\TestsController@vidgetFuncProfile')->name('ajax');
+// обработчик запроса ajax
+Route::post('/pages/ath-info', 'Pages\TestsController@dataForVidgetFuncProfile')->name('ath-info');
+
+// получение списка атлетов
+Route::get('/pages/athletes', 'Pages\TestsController@getAthletes')->name('athletes');
+
 /*------------*/
 
 

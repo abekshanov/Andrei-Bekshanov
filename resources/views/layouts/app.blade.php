@@ -11,7 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  {{--подключение ajax--}}
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -44,7 +44,7 @@
                     <ul class="navbar-nav mr-auto">
                         @auth
                             <a class="navbar-brand" href="#!">Мои тренировки</a>
-                            <a class="navbar-brand" href="#!">Мои показатели</a>
+                            <a class="navbar-brand" href="{{route('functional-profile')}}">Мои показатели</a>
                             <div class="btn-group">
                                 <a href="#!" class="navbar-brand dropdown-toggle" data-toggle="dropdown"
                                    aria-haspopup="true" aria-expanded="false">Тестирование</a>
